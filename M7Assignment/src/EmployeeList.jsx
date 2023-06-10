@@ -43,16 +43,14 @@ class EmployeeRow extends React.Component {
                             <Button 
                                 variant="danger" 
                                 className="mt-4" 
-                                onClick={this.toggleModal}
-                            >
-                                Cancel
+                                onClick={this.toggleModal}>
+                                    Cancel
                             </Button>
                             <Button 
                                 variant="success" 
                                 className="mt-4" 
-                                onClick={this.onDeleteClick}
-                            >
-                                Yes
+                                onClick={this.onDeleteClick}>
+                                    Yes
                             </Button>
                         </Modal.Footer>
                     </Modal>
@@ -77,8 +75,7 @@ function EmployeeTable(props) {
         <EmployeeRow
             key={employee._id}
             employee={employee}
-            deleteEmployee={props.deleteEmployee}
-        />
+            deleteEmployee={props.deleteEmployee} />
     )
     return (
         <Card>
