@@ -1,0 +1,64 @@
+class EmployeeEdit extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            // value: '',
+            // how to handle 3 different types of inputs?
+            name: '',
+            extension: '',
+            isEmployed: true
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.input = React.createRef();
+    }
+    handleChange(e) {
+        // this.setState({ value: e.target.value });
+        const target = e.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+
+        this.setState( { [name]: value})
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        // console.log('Hello', this.state.value);
+        console.log(this.state.name);
+        console.log(this.state.extension);
+        console.log(this.state.isEmployed)
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log(this.input.current.value);
+    }
+
+    render() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                Name:
+                {/* <input type="text" value={this.state.value} onChange={this.handleChange} /> */}
+                {/* <textarea value={this.state.value} onChange={this.handleChange}></textarea> */}
+                {/* <select value={this.state.value} onChange={this.handleChange}>
+                    <option value="engineering">Engineering</option>
+                    <option value="executive">Executive</option>
+                    <option value="marketing">Marketing</option>
+                    <option value="qa">QA</option>
+                    <option value="research">Research</option>
+                    <option value="sales">Sales</option>
+                </select> */}
+                Name:<br />
+                <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+                <input type="text" name="name" ref={this.input} />
+                Extension:<br />
+                <input type="text" name="extension" maxLength={4} value={this.state.extension} onChange={this.handleChange} />
+                Currently Employeed?<br />
+                <input type="checkbox" name="isEmployed" checked={this.state.isEmployed} onChange={this.handleChange} />
+
+                <input type="submit" value="Submit" />
+            </form>
+        )
+    }
+}
+
+const root = ReactDom.createRoot(document.getElementById('root'));
+root.render(<EmployeeEdit />);
